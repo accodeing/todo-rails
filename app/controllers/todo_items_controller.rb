@@ -6,6 +6,14 @@ class TodoItemsController < ApplicationController
     redirect_to @todo_list
   end
 
+  def complete
+    @todo_item = TodoItem.find(params[:id]))
+
+    @todo_item.update_attribute(:completed_at, Time.now)
+
+    redirect_to @todo_list, notice: "Todo item completed"
+  end
+
   def destroy
     @todo_item = @todo_list.todo_items.find(params[:id])
 
