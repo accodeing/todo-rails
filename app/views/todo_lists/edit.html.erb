@@ -1,6 +1,15 @@
-<h1>Editing Todo List</h1>
+<p id="notice"><%= notice %></p>
 
-<%= render 'form', todo_list: @todo_list %>
+<h2 class="todo_list_title">Editing Todo List</h2>
 
-<%= link_to 'Show', @todo_list %> |
-<%= link_to 'Back', todo_lists_path %>
+<div id="todo_items_wrapper">
+  <div id="form">
+    <%= render 'form', todo_list: @todo_list %>
+  </div>
+</div>
+
+<div class="links">
+  <%= link_to 'Back', todo_lists_path %>
+  <%= link_to 'Show', @todo_list %>
+  <%= link_to 'Delete', todo_list_path(@todo_list), method: :delete, data: { confirm: "Are you sure?" }, class: :delete %>
+</div>
