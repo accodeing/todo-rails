@@ -7,7 +7,7 @@ class TodoItemsController < ApplicationController
   end
 
   def complete
-    @todo_item = TodoItem.find(params[:id]))
+    @todo_item = TodoItem.find(params[:id])
 
     @todo_item.update_attribute(:completed_at, Time.now)
 
