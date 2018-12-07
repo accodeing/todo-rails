@@ -40,6 +40,8 @@ end
 
 group :test do
   gem 'cucumber', '~> 3.1.2'
+  gem 'capybara', '~> 3.12.0'
+  gem 'selenium-webdriver', '~> 3.141.0'
 end
 
 group :development do
