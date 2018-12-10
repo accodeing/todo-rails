@@ -11,7 +11,7 @@ Feature: Manage lists
     Then I navigate to the new list page
 
   Scenario Outline:
-  Edit new list
+  Create new list
 
     Given I am on the new list page
     When I enter the title "<Title>"
@@ -26,28 +26,32 @@ Feature: Manage lists
     |               | bilens reservdelar          | not         |
     | Nattbio       |                             | successfully|
     |               |                             | not         |
-    | 😸            | 😊                          | not        |
+    | Innan jul     | Baka pepparkakor            | successfully|
 
-  Scenario:
-  Edit existing list
+   Scenario Outline:
+   Edit existing list
 
-    Given I am on the list page
-    When I edit the existing title "<Title>"
-    And I edit the existing description "<Description>"
-    And I update the list
-    Then the list is <maybe> updated
-    And the page contains new title
-    And the page contains new description
+     Given I am on the list page
+     When I edit the existing list "<Title>"
+     And I change <type> to "<New text>"
+     And I update the list
+     Then the list is <maybe> updated
+     And the page contains "<New text>"
+   Examples:
+     | Title             | type        | New text            | maybe        |
+     | Agnetas lista     | title       | Agnetas nya lista   | successfully |
+     | Agnetas nya lista | title       |                     | not          |
+     | Nattbio           | description | Att göra innan bion | successfully |
+     | Nattbio           | description |                     | successfully |
 
 
   Scenario Outline:
-  Deleting existing list
+  Delete existing list
 
     Given I am on the list page
-    When I delete list page
-    And I affirm the verification
-    Then the list is <maybe> deleted
-    And I am navigated to the front page
+    When I delete the list "Innan jul" and choose <Affirmation> in the dialog
+    Then I am navigated to the list page
+    And the list "Innan jul" is deleted
 
   Examples:
     | Affirmation   | maybe        |
