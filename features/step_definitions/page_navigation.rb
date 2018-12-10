@@ -36,7 +36,7 @@ When('I initiate a new list') do
 end
 
 Then('I navigate to the new list page') do
-  expect(page).to have_current_path(PAGES.fetch(:list))
+  expect(page).to have_current_path(PAGES.fetch(:new_list_page))
 end
 
 Given('I am on the new list page') do
