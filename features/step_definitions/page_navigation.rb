@@ -5,13 +5,6 @@ ParameterType(
   transformer: ->(s) { s.to_sym }
 )
 
-# ParameterType(
-#   name:        'boolean',
-#   regexp:      /\w+/,
-#   type:        Boolean,
-#   transformer: ->(value) { Boolean.new(value) }
-# )
-
 BASE_URL = 'http://localhost:3000'
 PAGES = {
   front: '/',
