@@ -12,6 +12,10 @@ Simply manage your lists, adding more as you need it.
 See all tasks in a list at a glance and add new ones in just a few keystrokes!
 ![Tasks of a list](docs/show.png?raw=true "Tasks of a list")
 
+## Testing
+
+Run Cucumber tests with `bundle exec cucumber` (you need to have the rails server on, `rails server`).
+
 # Based on
 
 Main app based on the step by step tutorial ["How to Build a Todo App with Ruby on Rails"](https://medium.com/@deallen7/how-to-build-a-todo-app-in-rails-e6571fcccac3) by David Allen on Medium.
