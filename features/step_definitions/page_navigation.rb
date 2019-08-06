@@ -9,7 +9,7 @@ BASE_URL = 'http://localhost:3000'
 PAGES = {
   front: '/',
   new_list_page: '/todo_lists/new',
-  list: '/todo_lists/'
+  list: '/todo_lists'
 }
 
 def fill_in_title(title)
@@ -91,17 +91,31 @@ Then('the list is {word} updated') do |maybe|
   end
 end
 
-When('I delete the list {string} and choose {symbol} in the dialog') do |list_title, affirmation|
+When('I delete the list {string} and {word} the deletion') do |list_title, affirmation|
   click_link(list_title)
-  accept_confirm do
-    click_link('Delete')
+  if affirmation == 'accept'
+    accept_confirm do
+      click_link('Delete')
+    end
+  else
+    dismiss_confirm do
+      click_link('Delete')
+    end
   end
 end
 
-Then('I am navigated to the list page') do
-  expect(page).to have_current_path(PAGES.fetch(:list))
+Then('I am {word} navigated to the list page') do |maybe|
+  if maybe == 'successfully'
+    expect(page).to have_current_path(PAGES.fetch(:list))
+  else
+    expect(page).not_to have_current_path(PAGES.fetch(:list))
+  end
 end
 
-And('the list {string} is deleted') do |list_title|
-  expect(page).not_to have_content(list_title)
+And('the list {string} is {word} deleted') do |list_title, maybe|
+  if maybe == 'successfully'
+    expect(page).not_to have_content(/#{list_title}/i)
+  else
+    expect(page).to have_content(/#{list_title}/i)
+  end
 end
