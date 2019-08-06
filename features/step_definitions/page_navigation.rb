@@ -98,7 +98,7 @@ When('I delete the list {string} and choose {symbol} in the dialog') do |list_ti
   end
 end
 
-Then('I am navigated to the list page') do |maybe|
+Then('I am navigated to the list page') do
   expect(page).to have_current_path(PAGES.fetch(:list))
 end
 
