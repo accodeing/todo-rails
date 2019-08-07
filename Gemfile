@@ -40,7 +40,7 @@ end
 
 group :test do
   gem 'cucumber', '~> 3.1.2'
-  gem 'capybara', '~> 3.12.0'
+  gem 'capybara', '~> 3.20.2'
   gem 'selenium-webdriver', '~> 3.141.0'
   gem 'rspec', '~> 3.7.0'
 end

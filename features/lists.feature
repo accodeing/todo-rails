@@ -38,22 +38,22 @@ Feature: Manage lists
      Then the list is <maybe> updated
      And the page contains "<New text>"
    Examples:
-     | Title             | type        | New text            | maybe        |
-     | Agnetas lista     | title       | Agnetas nya lista   | successfully |
-     | Agnetas nya lista | title       |                     | not          |
-     | Nattbio           | description | Att göra innan bion | successfully |
-     | Nattbio           | description |                     | successfully |
+     | Title               | type        | New text            | maybe        |
+     | Agnetas lista       | title       | Agnetas nya lista   | successfully |
+     | Agnetas nya lista   | title       |                     | not          |
+     | Nattbio             | description | Att göra innan bion | successfully |
+     | Att göra innan bion | description |                     | successfully |
 
 
   Scenario Outline:
   Delete existing list
 
     Given I am on the list page
-    When I delete the list "Innan jul" and choose <Affirmation> in the dialog
-    Then I am navigated to the list page
-    And the list "Innan jul" is deleted
+    When I delete the list "Innan jul" and <accept> the deletion
+    Then I am <maybe> navigated to the list page
+    And the list "Innan jul" is <maybe> deleted
 
   Examples:
-    | Affirmation   | maybe        |
-    | OK            | successfully |
-    | Avbryt        | not          |
+    | accept | maybe        |
+    | reject | not          |
+    | accept | successfully |
